@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.menglang.ssh.pojo" auto-import="true">
+		<class name="WareHouse" table="ware_house">
+			<id name="id" column="id">
+				<generator class="native"></generator>
+			</id>
+			<property name="name" column="name" type="java.lang.String"></property>
+			<property name="address" column="address"></property>
+			<set name="products" inverse="true">
+			    <key column="ware_house_id"></key>
+			    <one-to-many class="Product"/>
+			</set>
+		</class>
+</hibernate-mapping>

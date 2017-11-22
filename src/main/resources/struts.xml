@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 是否启用开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- action实例交给spring容器创建 -->
+	<package name="myStruts" extends="struts-default">
+		<!-- 需要进行权限控制的页面访问 -->
+		<action name="page_*_*">
+			<result type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
+		</action>
+		<!-- 客户 -->
+		<action name="customerAction_*" class="customerAction" method="{1}">
+		</action>
+		<!-- 库房 -->
+		<action name="wareHouseAction_*" class="wareHouseAction" method="{1}">
+		</action>
+		<!-- 员工 -->
+		<action name="staffAction_*" class="staffAction" method="{1}">
+		</action>
+		<!-- 数据字典 -->
+		<action name="datadicAction_*" class="dataDicAction" method="{1}">
+		</action>
+		<!-- 产品 -->
+		<action name="productAction_*" class="productAction" method="{1}">
+		</action>
+		<!-- 联系人 -->
+		<action name="customerLinkManAction_*" class="customerLinkManAction" method="{1}">
+		</action>
+		<!-- 订单 -->
+		<action name="orderAction_*" class="orderAction" method="{1}">
+		</action>
+		<!-- 订单详情 -->
+		<action name="orderItemAction_*" class="orderItemAction" method="{1}">
+		</action>
+	</package>
+</struts>
