@@ -4,15 +4,18 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.menglang.ssh.pojo" auto-import="true">
-		<class name="WareHouse" table="ware_house">
+		<class name="WareHouse" table="warehouse">
 			<id name="id" column="id">
 				<generator class="native"></generator>
 			</id>
 			<property name="name" column="name" type="java.lang.String"></property>
 			<property name="address" column="address"></property>
-			<set name="products" inverse="true">
-			    <key column="ware_house_id"></key>
-			    <one-to-many class="Product"/>
+			<property name="detail" column="detail"></property>
+			<property name="startTime" column="start_time"></property>
+			<property name="endTime" column="end_time"></property>
+			<set name="products" table="product_warehouse" inverse="true">
+			    <key column="warehouse_id"></key>
+			    <many-to-many class="Product" column="product_id"/>
 			</set>
 		</class>
 </hibernate-mapping>

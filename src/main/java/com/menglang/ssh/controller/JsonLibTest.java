@@ -40,7 +40,7 @@ public class JsonLibTest {
 
 	}
 	
-	@Test
+	/*@Test
 	public void tewst1() {
 		PageBean pageBean = new PageBean();
 		pageBean.setCurrentPage(1);
@@ -66,10 +66,6 @@ public class JsonLibTest {
 		String json = JSONObject.fromObject(product1, jsonConfig).toString();
 		System.out.println(json);
 
-	}
+	}*/
 	
-	@Test
-	public void wq(){
-		
-	}
 }

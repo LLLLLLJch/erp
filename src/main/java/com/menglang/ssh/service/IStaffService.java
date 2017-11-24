@@ -16,6 +16,16 @@ public interface IStaffService {
 
 	boolean check(Integer num);
 
-	List<Staff> findStaff(DetachedCriteria detachedCriteria);
+	void findStaff(PageBean pageBean);
+
+	List<Staff> find(DetachedCriteria detachedCriteria);
+
+	Staff checkLogin(Staff model);
+
+	Staff checkName(String staffName);
+
+	boolean updatePassword(Staff model);
+
+	boolean update(Staff model);
 
 }

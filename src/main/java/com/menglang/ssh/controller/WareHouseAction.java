@@ -1,6 +1,7 @@
 package com.menglang.ssh.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -81,4 +82,10 @@ public class WareHouseAction extends BaseAction<WareHouse> {
 		this.ids = ids;
 	}
 
+	public String findWareHouse() {
+		List<WareHouse> list = wareHouseService.findWareHouse();
+		System.out.println(list);
+		list2Json(list);
+		return NONE;
+	}
 }

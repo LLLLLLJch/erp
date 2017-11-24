@@ -13,6 +13,10 @@
 			<property name="price" column="price"></property>
 			<property name="stock" column="stock"></property>
 			<property name="status" column="status"></property>
-			<many-to-one name="wareHouse" column="ware_house_id" class="WareHouse"></many-to-one>
+			<set name="wareHouses" table="product_warehouse" inverse="true">
+			    <key column="product_id"></key>
+			    <many-to-many class="WareHouse" column="warehouse_id"/>
+			</set>
+			
 		</class>
 </hibernate-mapping>

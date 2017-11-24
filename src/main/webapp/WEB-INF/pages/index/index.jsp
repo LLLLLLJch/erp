@@ -39,14 +39,15 @@
 			       $("#name").blur(function(){
 			           var name = $(this).val();
 			           $.post(
-			               "${ctx}/user/checkName.action", //url
-			               {"name":name}, //data
+			               "${ctx}/staffAction_checkName.action", //url
+			               {"staffName":name}, //data
 			               function(data) { //callback
-			                  if(data.status == Util.ERROR ) {//用户已经存在
-			                      $("#nameInfo").html("用户名不存在");
+			            	   var data = eval('(' + data + ')');
+			                  if(data.status == 0 ) {//用户已经存在
+			                      $("#nameInfo").html("用户名正确");
 			                      $("#nameInfo").css("color", "red");
 			                  } else {
-			                      $("#nameInfo").html("用户名正确");
+			                      $("#nameInfo").html("用户名不存在");
 			                      $("#nameInfo").css("color", "green");
 			                  }
 			               },
@@ -78,13 +79,13 @@
 			 
 			 	function dosave(){
 			 		$('#form').form('submit', {    
-					    url:"${ctx}/user/updatePassword.action",    
+					    url:"${ctx}/staffAction_updatePassword.action",    
 					    onSubmit: function(){    
 					        return $(this).form("validate");
 					    },       
 					    success:function(data){    
 					    	var data = eval('(' + data + ')');
-					        if(data.status == Util.SUCCESS){
+					        if(data.status == 0){
 					        	$.messager.alert("系统提示",data.msg);
 					        	$("#dialog").dialog('close');
 					        	$('#tableId').datagrid('reload');
@@ -114,7 +115,7 @@
 	<body class="easyui-layout">
 		<div data-options="region:'north'" style="height:100px;background-image: url('${ctx}/resources/img/u=1811189987,613661944&fm=27&gp=0.jpg')">
 			<div style="float:right">
-				<h2 style="color:white">欢迎您：${user.name}</h2>
+				<h2>欢迎您：${staff.staffName}</h2>
 			</div>
 		</div>
 		<div data-options="region:'south',split:false" style="height:25px;"></div>
@@ -153,18 +154,10 @@
 			</div>
 			<div title="统计报表" data-options="iconCls:'icon-tjbb'"
 				style="padding: 10px">
-				<a href="javascript:openTab('客户贡献分析','${ctx}/customer/goCustomerContributionPage.action','icon-khgxfx')"
+				<a href="javascript:openTab('客户订单分析','${ctx}/page_order_analyse.action','icon-khgxfx')"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-khgxfx'"
-					style="width: 150px;">客户贡献分析</a> <a
-					href="javascript:openTab('客户构成分析','${ctx}/customer/goCustomerCompositionPage.action','icon-khgcfx')"
-					class="easyui-linkbutton"
-					data-options="plain:true,iconCls:'icon-khgcfx'"
-					style="width: 150px;">客户构成分析</a> <a
-					href="javascript:openTab('客户服务分析','${ctx}/customer/goCustomerServiceAnalysisPage.action','icon-khfwfx')"
-					class="easyui-linkbutton"
-					data-options="plain:true,iconCls:'icon-khfwfx'"
-					style="width: 150px;">客户服务分析</a> 
+					style="width: 150px;">客户订单分析</a>
 			</div>
 			<div title="基础数据管理" data-options="iconCls:'icon-jcsjgl'"
 				style="padding: 10px">
@@ -193,7 +186,7 @@
 		</div>
 	</div>
 	<div region="south" style="height: 25px; padding: 5px" align="center">
-		Java1707CRM管理系统
+		ERP管理系统
 	</div>
 		<div data-options="region:'center',iconCls:'icon-ok'">
 			<div id="tabsId" class="easyui-tabs" data-options="fit:true" style="width:500px;height:250px;">   
@@ -211,7 +204,7 @@
 			    <table cellpadding="5">
 		    		<tr>
 		    			<td>用户名:</td>
-		    			<td><input class="easyui-validatebox" id="name" type="text" name="name" data-options="required:true"></input>
+		    			<td><input class="easyui-validatebox" id="name" type="text" name="staffName" data-options="required:true"></input>
 		    			<span id="nameInfo"></span></td>
 		    		</tr>
 		    		<tr>

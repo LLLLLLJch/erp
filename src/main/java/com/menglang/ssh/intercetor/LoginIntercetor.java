@@ -22,8 +22,9 @@ public class LoginIntercetor implements Interceptor{
 		ActionContext ac = invocation.getInvocationContext();
 		ActionProxy proxy = invocation.getProxy();
 		String methodName = proxy.getMethod();
-		if(!"login".equals(methodName)){
-			Object object = ac.getSession().get("admin");
+		System.out.println("----------"+methodName);
+		if(!"login".equals(methodName) || "execute".equals(methodName)){
+			Object object = ac.getSession().get("staff");
 			if(object==null){
 				return "login";
 			}

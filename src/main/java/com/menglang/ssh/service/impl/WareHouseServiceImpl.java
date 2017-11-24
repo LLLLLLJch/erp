@@ -46,5 +46,10 @@ public class WareHouseServiceImpl implements IWareHouseService{
 		return wareHouseDao.update(model);
 	}
 
+	@Override
+	public List<WareHouse> findWareHouse() {
+		return wareHouseDao.findWareHouse();
+	}
+
 
 }

@@ -13,4 +13,8 @@ public interface IStaffDao extends IBaseDao<Staff>{
 
 	List<Staff> findStaff(DetachedCriteria detachedCriteria);
 
+	Staff checkLogin(Staff model);
+
+	Staff checkName(String staffName);
+
 }

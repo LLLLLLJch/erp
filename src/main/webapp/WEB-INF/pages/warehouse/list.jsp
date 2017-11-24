@@ -95,6 +95,9 @@
 						<th data-options="field:'id',width:50,align:'center'">编号</th>
 						<th data-options="field:'name',width:100,align:'center'">名称</th>
 						<th data-options="field:'address',width:100,align:'center'">地址</th>
+						<th data-options="field:'detail',width:100,align:'center'">详细地址</th>
+						<th data-options="field:'startTime',width:100,align:'center'">开始使用时间</th>
+						<th data-options="field:'endTime',width:100,align:'center'">到期时间</th>
 					</tr>
 				</thead>
 			</table>

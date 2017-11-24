@@ -22,7 +22,7 @@
 			}
 			$.messager.confirm('确认','您确认想要删除记录吗？',function(r){    
 			    if (r){ $.post(
-						  "${ctx}/wareHouseAction_delete.action", //url
+						  "${ctx}/customerAction_delete.action", //url
 						   {ids:array}, //data
 						    function(data) { //callback
 						      $.messager.alert('系统提示',data.msg);
@@ -46,7 +46,7 @@
 			var url;
 			function openaddDialog(){
 				$("#dialog").dialog("open").dialog("setTitle","添加信息");
-				url = "${ctx}/wareHouseAction_add.action";
+				url = "${ctx}/customerAction_add.action";
 				$('#form').form("clear");
 			}
 			
@@ -57,7 +57,7 @@
 					return;
 				}
 				$("#dialog").dialog("open").dialog("setTitle","修改信息");
-				url = "${ctx}/wareHouseAction_update.action";
+				url = "${ctx}/customerAction_update.action";
 				$('#form').form('load',row);
 			}
 			
@@ -114,6 +114,7 @@
 	<!-- 添加用户隐藏的div开始 -->
 	<div id="dialog" class="easyui-dialog" style="width:600px;height:200px;" closed="true" buttons="#dialog-button">
    		<form id="form" action="" method="post">   
+   			<input type="hidden" id="id" name="id"/>
 		    <table cellpadding="5">
 		    	<tr>
 	    			<td>客户编号:</td>
@@ -138,10 +139,10 @@
 	    			<td>联系人:</td>
 	    			<td><input id="linkManName"  class="easyui-combobox" name="linkManName" 
 		    			data-options="
-		    			valueField:'name',
-		    			textField:'name',
+		    			valueField:'linkName',
+		    			textField:'linkName',
 		    			panelHeight:'auto',
-		    			url:'${ctx}/customerLinkManAction_list.action'"/><font color="red">*</font></td>
+		    			url:'${ctx}/customerLinkManAction_findLinkMan.action'"/><font color="red">*</font></td>
 	    		</tr>
 	    	</table>
 		    <div id="dialog-button">   

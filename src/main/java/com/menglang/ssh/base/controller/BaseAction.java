@@ -14,6 +14,7 @@ import com.menglang.ssh.vo.PageBean;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -68,7 +69,6 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 		jsonConfig.setExcludes(excludes);
 		String json = JSONObject.fromObject(object, jsonConfig).toString();
 		System.out.println(json);
-		System.out.println("=============================================");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/json;charset=utf-8");
 		try {
@@ -82,6 +82,24 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 		obj2Json(object, new String[]{"currentPage", "detachedCriteria", "pageSize"});
 	}
 
+	public void list2Json(Object object, String... excludes) {
+		// 将pageBean转换成json
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(java.sql.Timestamp.class, new DateJsonValueProcessor("yyyy-MM-dd"));  
+		jsonConfig.registerJsonValueProcessor(java.util.Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));  
+		//指定哪些属性不进行json转换
+		jsonConfig.setExcludes(excludes);
+		String json = JSONArray.fromObject(object, jsonConfig).toString();
+		System.out.println(json);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/json;charset=utf-8");
+		try {
+			response.getWriter().println(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public int getPage() {
 		return page;
 	}

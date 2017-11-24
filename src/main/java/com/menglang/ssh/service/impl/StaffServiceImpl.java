@@ -36,8 +36,33 @@ public class StaffServiceImpl implements IStaffService{
 	}
 
 	@Override
-	public List<Staff> findStaff(DetachedCriteria detachedCriteria) {
+	public void findStaff(PageBean pageBean) {
+		staffDao.findByPage(pageBean);
+	}
+
+	@Override
+	public List<Staff> find(DetachedCriteria detachedCriteria) {
 		return staffDao.findStaff(detachedCriteria);
+	}
+
+	@Override
+	public Staff checkLogin(Staff model) {
+		return staffDao.checkLogin(model);
+	}
+
+	@Override
+	public Staff checkName(String staffName) {
+		return staffDao.checkName(staffName);
+	}
+
+	@Override
+	public boolean updatePassword(Staff model) {
+		return staffDao.update(model);
+	}
+
+	@Override
+	public boolean update(Staff model) {
+		return staffDao.update(model);
 	}
 
 }

@@ -38,9 +38,9 @@
 		}
 		
 		$(function(){
-			{orderNo:'${param.orderNo}'}
+			{id:'${param.id}'}
 			$("#tableId").datagrid({
-			 	url:'${ctx}/orderItemAction_list.action?orderNo=${param.orderNo}',
+			 	url:'${ctx}/productAction_findWareHouse.action?id=${param.id}',
 				fit:true,
 				singleSelect:true,
 				toolbar:'#toolbar',
@@ -50,13 +50,11 @@
 				columns:[[    
 				     {field:'ck',checkbox:true},   
 				     {field:'id',title:'编号',width:50,align:'center'},    
-				     {field:'orderNo',title:'订单号',width:150,align:'center'},    
-				     {field:'customerId',title:'客户编号',width:100,align:'center'}, 
-				     {field:'productName',title:'商品名称',width:250,align:'center'},
-				     {field:'totalPrice',title:'总价',width:150,align:'center'},
-				     {field:'quantity',title:'数量',width:150,align:'center'},
-				     {field:'createTime',title:'创建时间',width:150,align:'center'}, 
-				     {field:'updateTime',title:'修改时间',width:150,align:'center'}, 
+				     {field:'name',title:'仓库名称',width:150,align:'center'},    
+				     {field:'address',title:'地址',width:100,align:'center'}, 
+				     {field:'detail',title:'详细地址',width:250,align:'center'},
+				     {field:'startTime',title:'开始时间',width:150,align:'center'},
+				     {field:'endTime',title:'结束时间',width:150,align:'center'},
 				     
 				]]
 			});

@@ -1,7 +1,10 @@
 package com.menglang.ssh.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import com.menglang.ssh.base.controller.BaseAction;
 import com.menglang.ssh.common.SeverResponse;
 import com.menglang.ssh.pojo.CustomerLinkMan;
+import com.menglang.ssh.pojo.Staff;
 import com.menglang.ssh.service.ICustomerLinkManService;
 
 @Controller
@@ -74,5 +78,11 @@ public class CustomerLinkManAction extends BaseAction<CustomerLinkMan> {
 		this.ids = ids;
 	}
 	
-	
+	public String findLinkMan() {
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(CustomerLinkMan.class);
+		detachedCriteria.add(Restrictions.eq("position","秘书"));
+		List<CustomerLinkMan> list = customerLinkManService.findLinkMan(detachedCriteria);
+		list2Json(list);
+		return NONE;
+	}
 }

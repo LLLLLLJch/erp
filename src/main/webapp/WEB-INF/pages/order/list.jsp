@@ -51,7 +51,7 @@
 			 $(function(){
 					{orderNo:'${param.orderNo}'}
 					$("#tableId").datagrid({
-					 	url:'${ctx}/orderItemAction_list.action?orderNo=${param.orderNo}',
+					 	url:'${ctx}/orderAction_list.action?orderNo=${param.orderNo}',
 						fit:true,
 						singleSelect:false,
 						toolbar:'#toolbar',

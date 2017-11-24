@@ -1,7 +1,9 @@
 package com.menglang.ssh.service.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,11 @@ public class CustomerLinkManServiceImpl implements ICustomerLinkManService{
 	@Override
 	public boolean update(CustomerLinkMan model) {
 		return customerLinkManDao.update(model);
+	}
+
+	@Override
+	public List<CustomerLinkMan> findLinkMan(DetachedCriteria detachedCriteria) {
+		return customerLinkManDao.findLinkMan(detachedCriteria);
 	}
 
 

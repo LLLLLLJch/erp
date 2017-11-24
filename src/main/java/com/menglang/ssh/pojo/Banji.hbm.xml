@@ -10,7 +10,7 @@
 			</id>
 			<property name="name" column="name" type="java.lang.String"></property>
 			<set name="students">
-			    <key column="student_id"></key>
+			    <key column="banji_id"></key>
 			    <one-to-many class="Student"/>
 			</set>
 		</class>
